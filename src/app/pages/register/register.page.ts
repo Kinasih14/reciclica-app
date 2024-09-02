@@ -11,7 +11,7 @@ export class RegisterPage implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 
   register() {
     this.router.navigate(['home']);  // Ensure this path matches your routing setup

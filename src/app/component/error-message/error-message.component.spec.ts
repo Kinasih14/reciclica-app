@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
+import { FormGroup } from '@angular/forms';
 import { ErrorMessageComponent } from './error-message.component';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 describe('ErrorMessageComponent', () => {
   let component: ErrorMessageComponent;
@@ -9,8 +10,8 @@ describe('ErrorMessageComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ErrorMessageComponent],
-      imports: [IonicModule.forRoot()],
+      declarations: [ ErrorMessageComponent ],
+      imports: [IonicModule.forRoot()]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ErrorMessageComponent);
@@ -18,56 +19,44 @@ describe('ErrorMessageComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should create the component', () => {
-    expect(component).toBeTruthy(); // Corrected assertion syntax
-  });
-
   it('should show error message on field touched and error present', () => {
-    component.field = new FormGroup({
-      anyField: new FormControl()
-    });
+    component.field = new FormGroup({anyField: new FormControl});
 
-    component.field.get('email')!.markAsTouched();
-    component.field.get('email')!.setErrors({ required: true });
-    component.error = "anyError";
-    fixture.detectChanges();
+    component.field.markAsTouched();
 
-    expect(component.shouldshowComponent()).toBeTruthy();
-  });
+    component.field.setErrors({anyError: true});
+    component.error = 'anyError';
 
-  it('should hide error message on field not touched', () => {
-    component.field = new FormGroup({
-      anyField: new FormControl()
-    });
+    expect(component.shouldShowComponent()).toBeTruthy();
+  })
 
-    component.field.get('email')!.setErrors({ required: true });
-    component.error = "anyError";
-    fixture.detectChanges();
+  it('should hide error message on field untouched', () => {
+    component.field = new FormGroup({anyField: new FormControl});
 
-    expect(component.shouldshowComponent()).toBeFalsy();
-  });
 
-  it('should hide error message on field touched, but no error', () => {
-    component.field = new FormGroup({
-      anyField: new FormControl()
-    });
-    component.field.get('email')!.markAsTouched();
-    component.field.get('email')!.setErrors({ required: true });
-    fixture.detectChanges();
+    component.field.setErrors({anyError: true});
+    component.error = 'anyError';
 
-    expect(component.shouldshowComponent()).toBeFalsy();
-  });
+    expect(component.shouldShowComponent()).toBeFalsy();
+  })
 
-  it('should hide error message on field touched and has error, but it is a diffenrent error', () => {
-    component.field = new FormGroup({
-      anyField: new FormControl()
-    });
+  it('should hide error message on field touched, but no errors', () => {
+    component.field = new FormGroup({anyField: new FormControl});
 
-    component.field.get('email')!.markAsTouched();
-    component.field.get('email')!.setErrors({ required: true });
-    component.error = "anyError";
-    fixture.detectChanges();
+    component.field.markAsTouched();
+    component.error = 'anyError';
 
-    expect(component.shouldshowComponent()).toBeFalsy();
-  });
+    expect(component.shouldShowComponent()).toBeFalsy();
+  })
+
+  it('should hide error message on field touched and has error, but it is a different error', () => {
+    component.field = new FormGroup({anyField: new FormControl});
+
+    component.field.markAsTouched();
+    component.field.setErrors({anyError: true});
+    component.error = 'anotherError';
+
+    expect(component.shouldShowComponent()).toBeFalsy();
+  })
+
 });

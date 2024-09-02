@@ -1,40 +1,37 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button title=""></ion-back-button>
+      <ion-back-button text=""></ion-back-button>
     </ion-buttons>
-    <ion-title color="light">Register</ion-title>
+    <ion-title>Register</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-header>
       <ion-card-title>What do you want to do with the recyclable waste?</ion-card-title>
     </ion-card-header>
-
     <ion-card-content>
       <ion-radio-group>
 
         <ion-item>
           <ion-label>I want to BUY it</ion-label>
-          <ion-radio value="CLIENT" slot="start"></ion-radio>
+          <ion-radio slot="start" value="CLIENT"></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>I want to SELL it</ion-label>
-          <ion-radio value="PARTNER" slot="start"></ion-radio>
-        </ion-item>
+          <ion-radio slot="start" value="PARTNER"></ion-radio>
 
+        </ion-item>
       </ion-radio-group>
     </ion-card-content>
   </ion-card>
-
   <ion-card>
     <ion-card-header>
       <ion-card-title>Contact</ion-card-title>
     </ion-card-header>
-
     <ion-card-content>
       <ion-item>
         <ion-label position="floating">Name</ion-label>
@@ -49,7 +46,7 @@
         <ion-input type="password"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Confirm password</ion-label>
+        <ion-label position="floating">Confirm Password</ion-label>
         <ion-input type="password"></ion-input>
       </ion-item>
       <ion-item>
@@ -58,12 +55,10 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
-
   <ion-card>
     <ion-card-header>
       <ion-card-title>Address Information</ion-card-title>
     </ion-card-header>
-
     <ion-card-content>
       <ion-item>
         <ion-label position="floating">Address</ion-label>
@@ -93,9 +88,7 @@
         <ion-label position="floating">City</ion-label>
         <ion-input type="text"></ion-input>
       </ion-item>
-
-
     </ion-card-content>
   </ion-card>
-  <ion-button size="full" color="light" (click)="register()">Register</ion-button>
+  <ion-button color="light" size="full" (click)="register()">Register</ion-button>
 </ion-content>
