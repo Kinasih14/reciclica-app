@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+
+import { Component, input, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pickup-call-card',
@@ -6,15 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./pickup-call-card.component.scss'],
 })
 export class PickupCallCardComponent implements OnInit {
-
-  @Input() hasHeader?: boolean; // Accept input from parent component
-  @Input() hasFooter?: boolean;
-
+  @Input() hasHeader: boolean = false;  // Default value can be true or false
+  @Input() hasFooter: boolean = true;  // Default value can be true or false
   @Input() status: string = '';
   @Input() updatedAt: string = '';
   @Input() createdAt: string = '';
   @Input() notes: string = '';
   @Input() value: string = '';
+
 
   constructor() {}
 

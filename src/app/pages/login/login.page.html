@@ -15,9 +15,9 @@
           </ion-item>
 
           <!-- Correcting the attribute binding -->
-          <app-error-message message="Email wajib diisi bro" [field]="form.get('email')" error="required">
+          <app-error-message message="Email is mandatory" [field]="form.get('email')" error="required">
           </app-error-message>
-          <app-error-message message="Format email salah ges" [field]="form.get('email')" error="email">
+          <app-error-message message="Email is invalid" [field]="form.get('email')" error="email">
           </app-error-message>
 
           <ion-item>
@@ -27,13 +27,14 @@
           </ion-item>
 
           <!-- Correcting the attribute binding -->
-          <app-error-message message="Password wajib diisi bro" [field]="form.get('password')" error="required">
+          <app-error-message message="Password is mandatory" [field]="form.get('password')" error="required">
           </app-error-message>
 
-          <ion-button color="dark" fill="clear" size="full" [disabled]="form.get('email')?.invalid" style="text-transform: none;"
-          (click)="forgotEmailPassword()" id="recoverPasswordButton"> Forgot Email/Password
+          <ion-button color="dark" fill="clear" size="full" [disabled]="!form.get('email')?.valid" style="text-transform: none;"
+          (click)="forgotEmailPassword()" id="recoverPasswordButton">
+            Forgot Email/Password
           </ion-button>
-          <ion-button color="success" size="full" [disabled]="!form.valid" (click)="login()" id="loginButton">
+          <ion-button color="success" size="full" [disabled]="!form.valid" (click)="loginUser()" id="loginButton">
             Login
           </ion-button>
           <ion-button color="success" fill="clear" size="full" (click)="register()">

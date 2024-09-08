@@ -10,12 +10,13 @@ import { LoadingState } from 'src/store/loading/LoadingState';
   styleUrls: ['./loading.component.scss'],
 })
 export class LoadingComponent implements OnInit {
+  loadingState$: Observable<LoadingState>;
 
-  loadingState$: Observable<LoadingState> = new Observable<LoadingState>();
-
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) {
+    this.loadingState$ = new Observable<LoadingState>();
+  }
 
   ngOnInit() {
-    this.loadingState$= this.store.select('loading');
+    this.loadingState$ = this.store.select('loading');
   }
 }
