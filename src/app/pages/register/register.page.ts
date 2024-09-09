@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/store/AppState';
 import { register } from 'src/store/register/register.actions';
 import { RegisterState } from 'src/store/register/RegisterState';
-import { show, hide } from 'src/store/loading/loading.action';
+import { show, hide } from 'src/store/loading/loading.actions';
 import { ToastController } from '@ionic/angular';
 import { login } from 'src/store/login/login.actions';
 import { Subscription } from 'rxjs';
